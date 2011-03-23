@@ -34,11 +34,17 @@ and changed the lines to (`libraw.pc` as an example):
 	Description: Raw image decoder library (non-thread-safe)
 	Version: 0.13.2
 	Libs: -L${libdir} -lraw -lws2_32 -lm -lstdc++
-	Cflags: -I${includedir}/libraw -w -DLIBRAW_NODLL -DLIBRAW_NOTHREADS
+	Cflags: -I${includedir} -w -DLIBRAW_NODLL -DLIBRAW_NOTHREADS
+
+Please note that I changed the `Cflags:` a little more than filling out templates. Made that because the `samples` coming with the current `libraw` distribution contain `include` lines like `#include "libraw/libraw.h"` so a `-I${includedir}/libraw`... flag would be to inconsistent with that as the linker expected files to be at `${includedir}/libraw/libraw/libraw.h` finally, so I shortened the path in the `*.pc` as seeming a less intrusive way to me (maybe using `autotools` here would save time, but I'm not shure, they are recommended on the Windows platform?).
 
 Then the `PKG_CONFIG_PATH` environment variable has to include this new path:
     
     $ echo $PKG_CONFIG_PATH
 	H:/Gtk+/lib/pkgconfig;H:/MinGW/msys/1.0/local/lib/pkgconfig
+
+Finally you should be able to compile/link simply by:
+
+    $ g++ -o dump_rgb_from_raw_file dumprgb.cpp $(pkg-config.exe --libs --cflags libraw)
 
 vim: filetype=markdown
