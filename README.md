@@ -9,7 +9,7 @@ Install `libraw` stuff: Load the [source archive](http://www.libraw.org/download
 
     mingw32-make -f Makefile.mingw
 
-Assumed your mingw/msys is installed in `h:\mingw`/`h:\mingw\msys\1.0` make a sub-directory local in `h:\mingw\msys\1.0` and then copy the libraw.a file (in folder `lib` of the sources) to `h:\mingw\msys\1.0\local\lib\` and the folder `libraw` in the sources folder as it is to `h:\mingw\msys\1.0\local\include`.
+Assumed your mingw/msys is installed in `h:\mingw`/`h:\mingw\msys\1.0` make a sub-directory `local` in `h:\mingw\msys\1.0` and then copy the libraw.a file (in folder `lib` of the sources) to `h:\mingw\msys\1.0\local\lib\` and the folder `libraw` in the sources folder as it is, such like `h:\mingw\msys\1.0\local\include\libraw`.
 
 You may use the `.project` file for opening/building the app in [CodeLite IDE](http://www.codelite.org/): Create a new workspace there (`Workspace >> New Workspace`) and add the project (`Workspace >> Add an existing project`). Now hit `Rebuild` simply (context menu on the new project in the `Workspace` view).
 
@@ -18,7 +18,7 @@ You may also use the `Makefile.mingw` from the source distribution as a model to
 Optional steps
 ---
 
-In case you're using the `pkg-config` tool [available as a bundle here](http://ftp.gnome.org/pub/GNOME/binaries/win32/glade3/3.6/glade3-3.6.7-with-GTK+.exe) already it could make sense to copy the pc files too, but that step is optional, here is what I did:
+In case you're using the `pkg-config` tool [available as a bundle here](http://ftp.gnome.org/pub/GNOME/binaries/win32/glade3/3.6/glade3-3.6.7-with-GTK+.exe) already it could make sense to copy the `*.pc` files too, but that step is optional, here is what I did:
 
     cp /e/temp/LibRaw-0.13.2/libraw_r.pc.in /h/mingw/msys/1.0/local/lib/pkgconfig/libraw_r.pc
 	cp /e/temp/LibRaw-0.13.2/libraw.pc.in /h/mingw/msys/1.0/local/lib/pkgconfig/libraw.pc
